@@ -1,85 +1,85 @@
-rouille::rouille! {
-    externe cagette rouille;
+nyrust::nyrust! {
+    ekstern kasse nyrust;
 
-    utilisons std::collections::Dictionnaire comme Dico;
+    bruk std::collections::Ordbok som Bok;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine>;
+    oppfyll NøkkelVerdi {
+        funksjon skriv(&sjølv, nøkkel: Streng, verdi: Streng);
+        funksjon hent(&sjølv, nøkkel: Streng) -> Resultat<Kanskje<&Streng>, Streng>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    statisk muterbar ORDBOK: Kanskje<Bok<Streng, Streng>> = Ingen;
 
-    structure Concrète;
+    struktur Konkret;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    oppfyll NøkkelVerdi for Konkret {
+        funksjon skriv(&sjølv, nøkkel: Streng, verdi: Streng) {
+            la Ordbok = utrygg {
+                ORDBOK.hent_eller_tilbakefall_til(Défaut::défaut)
             };
-            dico.insérer(clé, valeur);
+            Ordbok.sett_inn(nøkkel, verdi);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        funksjon hent(&sjølv, nøkkel: Streng) -> Resultat<Kanskje<&Streng>, Streng> {
+            viss la Noko(Ordbok) = utrygg { ORDBOK.som_referanse() } {
+                Ok(Ordbok.hent(&nøkkel))
+            } elles {
+                Feil("Fann ikkje i ordbok".til())
             }
         }
     }
 
-    public(cagette) fonction peut_etre(i: u32) -> PeutÊtre<Résultat<u32, Chaine>> {
-        si i % 2 == 1 {
-            si i == 42 {
-                Quelque(Arf(Chaine::depuis("merde")))
-            } sinon {
-                Quelque(Bien(33))
+    offentleg(cagette) funksjon kanskje(å: u32) -> Kanskje<Resultat<u32, Streng>> {
+        viss å % 2 == 1 {
+            viss å == 42 {
+                Noko(Feil(Streng::fra("helvete")))
+            } elles {
+                Noko(Ok(33))
             }
-        } sinon {
-            Rien
+        } elles {
+            Ingen
         }
     }
 
-    asynchrone fonction exemple() {
+    asynkron funksjon døme() {
     }
 
-    asynchrone fonction exemple2() {
-        exemple().attend;
+    asynkron funksjon døme2() {
+        døme().attend;
     }
 
-    fonction principale() {
-        soit mutable x = 31;
+    funksjon hovud() {
+        la muterbar x = 31;
 
-        selon x {
+        jamstill x {
             42 => {
-                affiche!("omelette du fromage")
+                skrivln!("Pølse i vaffel")
             }
-            _ => affiche!("voila")
+            _ => skrivln!("Det finnes ikkje dårleg ver, bare dårlege klede")
         }
 
-        pour i de 0..10 {
-            soit val = boucle {
-                arrête i;
+        for æ i 0..10 {
+            la val = løkke {
+                bryt æ;
             };
 
-            tant que x < val {
+            mens kva x < val {
                 x += 1;
             }
 
-            x = si soit Quelque(resultat) = peut_etre(i) {
-                resultat.déballer()
-            } sinon {
+            x = viss la Noko(resultat) = kanskje(i) {
+                resultat.pakk_ut()
+            } elles {
                 12
             };
         }
 
-        //secondaire();
+        //sekundær();
     }
 
-    #[légal(code_inaccessible)]
-    fonction secondaire() {
-        merde!("oh non"); // for the true French experience
-        calisse!("tabernacle"); // for friends speaking fr-ca
-        oups!("fetchez la vache"); // in SFW contexts
+    #[godta(unåeleg_kode)]
+    funksjon sekundær() {
+        panikk!("faen"); // for the true norwegian experience
+        faen!("hestkuk"); // for friends speaking northern dialects of norwegian
+        oisann!("fy søren"); // in SFW contexts
     }
 }
