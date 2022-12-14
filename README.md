@@ -1,4 +1,4 @@
-# nyrust
+# Nyrust
 
 ![](logo.jpeg)
 
