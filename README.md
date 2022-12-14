@@ -1,58 +1,60 @@
-# rouille
+# Nyrust
 
-![](https://github.com/bnjbvr/rouille/raw/principale/logo.jpeg)
+![](logo.jpeg)
 
-Aren't you _le tired_ from writing Rust programs in English? Do you like saying
-"merde" a lot? Would you like to try something different, in an exotic and
+Aren't you _dritt lei_ from writing Rust programs in English? Do you like saying
+"faen" a lot? Would you like to try something different, in an exotic and
 funny-sounding language? Would you want to bring some French touch to your
 programs?
 
-**rouille** (French for _Rust_) is here to save your day, as it allows you to
-write Rust programs in French, using French keywords, French function names,
-French idioms.
+**nyrust** (A combination of norwegian for _Rust_, which is exactly the same as in english, and _ny_ as in _nynorsk_) is here to save your day, as it allows you to
+write Rust programs in Norwegian (nynorsk), using nynorsk keywords, nynorsk function names,
+nynorsk idioms.
 
 This has been designed to be used as the official programming language to
-develop the future French sovereign operating system. 
+develop the future Bergen sovereign operating system. 
 
-If you're from the French or any other governement with French as an official 
+If you're from Bergen or any other county with nynorsk as an official 
 language: I will be awaiting your donations on
-[liberapay](https://liberapay.com/bnjbvr/).
+[skatteetaten.no](https://skatteetaten.no/).
 
-You're from Quebec (or elsewhere) and don't feel at ease using only French words? 
+You're from a part of Norway where people actually live (or elsewhere), and don't feel at ease using only nynorsk words? 
 
 Don't worry!
-French Rust is fully compatible with English-Rust, so you can mix both at your
+Nynorsk Rust is fully compatible with English-Rust, so you can mix both at your
 convenience.
 
-Here's an example of what can be achieved with Rouille:
+Here's an example of what can be achieved with Nyrust:
 
-### trait and impl (aka convention et réalisation)
+### trait and impl (aka grensesnitt og oppfylling)
 
 ```rust
-rouille::rouille! {
-    utilisons std::collections::Dictionnaire comme Dico;
+nyrust::nyrust! {
+    ekstern kasse nyrust;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> PeutÊtre<&Chaine>;
+    bruk std::collections::Ordbok som Bok;
+
+    oppfyll NøkkelVerdi {
+        funksjon skriv(&sjølv, nøkkel: Streng, verdi: Streng);
+        funksjon hent(&sjølv, nøkkel: Streng) -> Resultat<Kanskje<&Streng>, Streng>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    statisk muterbar ORDBOK: Kanskje<Bok<Streng, Streng>> = Ingen;
 
-    structure Concrète;
+    struktur Konkret;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    oppfyll NøkkelVerdi for Konkret {
+        funksjon skriv(&sjølv, nøkkel: Streng, verdi: Streng) {
+            la Ordbok = utrygg {
+                ORDBOK.hent_eller_tilbakefall_til(Défaut::défaut)
             };
-            dico.insérer(clé, valeur);
+            Ordbok.sett_inn(nøkkel, verdi);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        funksjon hent(&sjølv, nøkkel: Streng) -> Resultat<Kanskje<&Streng>, Streng> {
+            viss la Noko(Ordbok) = utrygg { ORDBOK.som_referanse() } {
+                Ok(Ordbok.hent(&nøkkel))
+            } elles {
+                Feil("Fann ikkje i ordbok".til())
             }
         }
     }
@@ -62,36 +64,36 @@ rouille::rouille! {
 ### Support for regional languages
 
 ```rust
-#[légal(code_inaccessible)]
-fonction secondaire() {
-    merde!("oh non"); // for the true French experience
-    calisse!("tabarnak"); // for friends speaking fr-ca
-    oups!("fetchez la vache"); // in SFW contexts
+#[godta(unåeleg_kode)]
+funksjon sekundær() {
+    panikk!("faen"); // for the true norwegian experience
+    faen!("hestkuk"); // for friends speaking northern dialects of norwegian
+    oisann!("fy søren"); // in SFW contexts
 }
 ```
 
 ### Other examples
 
 See the [examples](./examples/src/main.rs) to get a rough sense of the whole
-syntax. Voilà, that's it.
+syntax. Vipps (not the company), that's it.
 
-## les contributions
+## Bidra
 
-First of all, _merci beaucoup_ for considering participating to this joke, the
-French government will thank you later! Feel free to throw in a few identifiers
-here and there, and open a pull-request against the `principale` (French for
+First of all, _takk skal du ha_ for considering participating to this joke, the
+Bergen government will thank you later! Feel free to throw in a few identifiers
+here and there, and open a pull-request against the `hovud` (Nynorsk for
 `main`) branch.
 
-Please don't introduce swear words, though: we will not excuse your French.
+Please don't introduce swear words, though: we will not excuse your norwegian.
 
-## but why would you do zat
+## but kvifor would you do det?
 
-- horsin around
-- playing with raw proc macros
-- making a bit of fun about programming languages that do this seriously,
-  though I can see their utility.
-- winking at [Marcel](https://github.com/brouberol/marcel)
-- c'est chic
+- to make Ivar Aasen proud
+- have the chance of getting some kind of award from Språkrådet
+- stop the swedes from teasing us because we don't have a localized version of Rust
+- vere ein del av gutta
+- guttastemning
+- fortele hele verda at du er frå Norge
 
 ## Other languages
 
@@ -128,12 +130,10 @@ Please don't introduce swear words, though: we will not excuse your French.
 - Swedish: [rost](https://github.com/vojd/rost/)
 - Croatian: [hrđa](https://github.com/njelich/hrdja)
 
-## un grand merci
+## En stor takk til
 
-- [@VentGrey](https://twitter.com/VentGrey) for making a logo!
+- Meg 😎
 
-## la license
+## Lisensen
 
-[License Publique Rien à Branler](http://sam.zoy.org/lprab/),
-_le_ official translation of the [WTFPL](http://www.wtfpl.net/)
-by the same author.
+kven bryr seg om lisens, ærleg talt?
