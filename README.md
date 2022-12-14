@@ -26,7 +26,7 @@ convenience.
 
 Here's an example of what can be achieved with Nyrust:
 
-### trait and impl (aka convention et réalisation)
+### trait and impl (aka grensesnitt og oppfylling)
 
 ```rust
 nyrust::nyrust! {
